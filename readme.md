@@ -19,6 +19,8 @@ Simple local portfolio tracker (no database)
 
 Clean Flask + Tailwind CSS interface
 
+<img width="1518" height="678" alt="image" src="https://github.com/user-attachments/assets/a21d5c9a-2686-486d-9d84-e9df9ecd2f39" />
+
 
 ⚙️ Tech Stack
 Component	Technology
