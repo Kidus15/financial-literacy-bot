@@ -1,0 +1,5 @@
+.bot { background:#f3f4f6; padding:.75rem 1rem; border-radius:.75rem; max-width:42rem; }
+.user { background:#16a34a; color:#fff; padding:.75rem 1rem; border-radius:.75rem; max-width:42rem; margin-left:auto; }
+.chip { background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; padding:.4rem .7rem; border-radius:9999px; }
+.tab.hidden { display:none; }
+.tab.active { display:flex; }

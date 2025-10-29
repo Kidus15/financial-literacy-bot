@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FinanceBot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-gray-50">
+  <header class="bg-green-600 text-white p-4 shadow">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-bold">$ FinanceBot</span>
+      </div>
+      <nav class="flex gap-4 opacity-90">
+        <a class="hover:underline" href="#">About</a>
+        <a class="hover:underline" href="#">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-4 grid md:grid-cols-[16rem_1fr] gap-4">
+    <!-- Sidebar -->
+    <aside class="bg-white rounded-xl p-4 shadow">
+      <h2 class="font-semibold mb-2">Quick Topics</h2>
+      <div class="space-y-2">
+        <button class="tab-btn w-full text-left px-3 py-2 rounded bg-green-100 text-green-700" data-tab="chat">📚 Chat Assistant</button>
+        <button class="tab-btn w-full text-left px-3 py-2 rounded hover:bg-gray-100" data-tab="budget">🐖 Budgeting Tips</button>
+        <button class="tab-btn w-full text-left px-3 py-2 rounded hover:bg-gray-100" data-tab="stocks">📈 Stock Lookup</button>
+      </div>
+      <div class="mt-6 p-3 bg-blue-50 rounded border border-blue-200 text-sm">
+        <b>💡 Did You Know?</b><br>Compound interest is your best friend for long-term savings!
+      </div>
+    </aside>
+
+    <!-- Main card -->
+    <section class="bg-white rounded-xl shadow overflow-hidden">
+      <!-- CHAT TAB -->
+      <div id="tab-chat" class="tab active flex flex-col h-full">
+        <div class="border-b p-4">
+          <h3 class="font-bold text-xl">Financial Assistant</h3>
+          <p class="text-sm text-gray-600">Ask me about personal finance, budgeting, or investing.</p>
+        </div>
+
+        <div id="chat" class="flex-1 p-4 space-y-4 overflow-y-auto">
+          <div class="bot">
+            Hi! I can explain budgeting, investment basics, or look up a stock price. What would you like to learn?
+          </div>
+        </div>
+
+        <div class="p-4 border-t">
+          <!-- Prompt chips -->
+          <div class="mb-3 flex flex-wrap gap-2 text-sm">
+            <button class="chip">💰 How do I start investing?</button>
+            <button class="chip">📊 Explain the stock market</button>
+            <button class="chip">💳 What's a good credit score?</button>
+            <button class="chip">🏠 Saving for a down payment</button>
+            <button class="chip">📈 What are index funds?</button>
+          </div>
+          <div class="flex gap-2">
+            <input id="msg" class="flex-1 border rounded px-3 py-2" placeholder="Ask a question about finance..." />
+            <button id="send" class="bg-green-600 text-white px-4 py-2 rounded">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STOCK TAB -->
+      <div id="tab-stocks" class="tab hidden flex flex-col h-full">
+        <div class="border-b p-4">
+          <h3 class="font-bold text-xl">Stock Lookup</h3>
+          <p class="text-sm text-gray-600">Enter a ticker to get a live price.</p>
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="flex gap-2">
+            <input id="ticker" class="border rounded px-3 py-2 w-40" placeholder="AAPL" />
+            <button id="lookup" class="bg-gray-800 text-white px-4 py-2 rounded">Get Price</button>
+          </div>
+          <div id="quote" class="text-sm text-gray-700"></div>
+        </div>
+      </div>
+
+      <!-- BUDGET TAB -->
+      <div id="tab-budget" class="tab hidden">
+        <div class="border-b p-4">
+          <h3 class="font-bold text-xl">Budgeting Tips</h3>
+          <p class="text-sm text-gray-600">Simple, practical ideas.</p>
+        </div>
+        <div class="p-6 grid gap-4">
+          {% for title, desc in tips %}
+          <div class="border rounded p-4">
+            <h4 class="font-semibold mb-1">{{ title }}</h4>
+            <p class="text-sm text-gray-600">{{ desc }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-xs text-gray-500 p-6">Powered by Meta Llama 3.1 (NIM) & Yahoo Finance</footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
